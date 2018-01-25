@@ -52,6 +52,8 @@ class ReactApp extends React.Component{
           <Ons.Page>
             <Ons.List>
               <Ons.ListItem key='home' onClick={this.loadPage.bind(this, Home)} tappable>Home</Ons.ListItem>
+              <Ons.ListItem key='cancelRoom' onClick={this.loadPage.bind(this, CancelRoom)} tappable>แจ้งยกเลิกห้องพัก</Ons.ListItem>
+
 
             </Ons.List>
           </Ons.Page>
