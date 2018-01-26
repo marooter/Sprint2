@@ -15,12 +15,8 @@ public class PaymentSlip {
 	private String name;
 	private String billid;
 	private String bank;
-  private Date date;
+  	private Date date;
 	private String time;
-
-
-
-
 
 	private PaymentSlip() {}
 

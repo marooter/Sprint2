@@ -38,7 +38,7 @@ public class MakePaymentController {
     public String Payment(@PathVariable String billid){
         ReservationReceipt Billid = this.reservationReceiptRepository.findByBillid(billid);
               System.out.println(Billid);
-              if(Billid!=null)//รีเทิร์นเป็นออปเจคมั้ย ถ้าไม่มันจะเป็นnull
+              if(Billid!=null)
             return "{\"status\":\"found\"}";
         else
             return "{\"status\":\"not found\"}";

@@ -345,8 +345,8 @@ export default  class Maintenance extends React.Component {
 
     if(this.state.roomnumber !==  ''){
 
-      fetch('http://localhost:8080/api/roomnumbers/search/findByRoomID?'+
-        'roomID=' + this.state.roomnumber)
+      fetch('http://localhost:8080/api/roomnumbers/search/findByroomnumber?'+
+        'roomnumber=' + this.state.roomnumber)
          .then((response)=> response.json())
          .then((responseJson) => {
               sendroom =this.state.roomnumber;
