@@ -66,26 +66,6 @@ class CancelBill1 extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class CancelBill extends React.Component {
 
   constructor(props){
@@ -133,7 +113,7 @@ class CancelBill extends React.Component {
       } 
       today = yyyy + '-' + mm + '-' + dd; 
       client({method: 'GET', path: `/cancelbill/${this.getCancelRooom()}/billid/${this.props.state.idBill}/name/${this.props.state.name}/nameroom/${this.state.nameroom}/roomnumber/${this.state.roomnumber}/date/${today.toString()}/price/${this.state.price}`}).done(response => {
-        console.log(response.entity.status)
+        // console.log(response.entity.status)
         if(response.entity.status==="Saved")
           this.props.navigator.pushPage({ component: CancelBill1, props: { key: 'cancelBill1'} });
        
@@ -149,9 +129,10 @@ getCancelRooom() {
     return text;
   }
  componentDidMount(){
+   const that = this;
   client({method: 'GET', path: `/billid/${this.props.state.idBill}`}).done(response => {
-    console.log(response.entity)
-    this.setState({
+    console.log(response.entity.nameroom,response.entity.price)
+    that.setState({
       date:response.entity.date,
       nameroom:response.entity.nameroom,
       price:response.entity.price,
@@ -201,9 +182,6 @@ getCancelRooom() {
                 เลขที่ห้อง : {this.state.roomnumber}
               </p>
 
-              <p>
-                วันที่จอง : {this.state.date}
-              </p>
 
               <p>
                 ราคา : {this.state.price}
@@ -239,29 +217,6 @@ getCancelRooom() {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default class CancelRoom extends React.Component {
   constructor() {
