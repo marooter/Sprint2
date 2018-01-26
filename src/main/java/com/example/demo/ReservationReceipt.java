@@ -29,7 +29,7 @@ public class ReservationReceipt {
     private ReservationReceipt() {}
     
     public ReservationReceipt(String billid,String name,String nameroom,String roomnumber,String date,Double price){
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         this.billid = billid;
         this.name = name;
         this.nameroom = nameroom;

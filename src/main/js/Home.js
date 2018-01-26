@@ -9,6 +9,7 @@ import BallRoom from './BallRoom';
 import ReservationRoom1 from './ReservationRoom1';
 import Cleaning from './Cleaning';
 import Maintenance from './Maintenance';
+import CancelRoom from './CancelRoom';
 
 let imgUrl = 'https://www.picz.in.th/images/2018/01/25/2000.jpg';
 export default class Home extends React.Component {
@@ -45,6 +46,10 @@ export default class Home extends React.Component {
     this.props.navigator.pushPage({ component: Maintenance, props: { key: 'maintenance' } });
   }
 
+  CancelRoom() {
+      this.props.navigator.pushPage({ component: CancelRoom, props: { key: 'cancelRoom' } });
+    }
+
 
 
 render() {
@@ -60,6 +65,7 @@ render() {
           <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.PageBallRoom.bind(this)}>จองห้องจัดเลี้ยง</Ons.Button><br /><br />
           <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.ReservationRoom1.bind(this)}>จองห้องพัก</Ons.Button><br /><br />
           <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Cleaning.bind(this)}>แจ้งทำความสะอาด</Ons.Button><br /><br />
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.CancelRoom.bind(this)}>เเจ้งยกเลิกห้องพัก</Ons.Button><br /><br />
           <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Maintenance.bind(this)}>แจ้งซ่อม</Ons.Button><br /><br />
           <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Payment.bind(this)}>แจ้งชำระเงิน</Ons.Button>
         </div>

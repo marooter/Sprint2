@@ -313,7 +313,6 @@ export default class Cleaning extends React.Component {
   
   ReserveCleaning() {
     if(this.state.roomnumber !==  ''){
-
       fetch('http://localhost:8080/api/roomnumbers/search/findByroomnumber?'+
         'roomnumber=' + this.state.roomnumber)
          .then((response)=> response.json())

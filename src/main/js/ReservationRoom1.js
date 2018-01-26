@@ -137,7 +137,7 @@ class ReservationRoom2 extends React.Component {
                 <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
               </td>
             </tr>
           </center>
@@ -160,7 +160,7 @@ class ReservationRoom2 extends React.Component {
                 <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
               </td>
             </tr>
           </center>
@@ -183,7 +183,7 @@ class ReservationRoom2 extends React.Component {
                 <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
               </td>
             </tr>
           </center>
@@ -206,7 +206,7 @@ class ReservationRoom2 extends React.Component {
                 <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง: &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
               </td>
             </tr>
           </center>
