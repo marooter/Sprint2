@@ -7,15 +7,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final EmployeeRepository repository;
+	private final BallroomRepository ballroomRepository;
 
-	@Autowired
-	public DatabaseLoader(EmployeeRepository repository) {
-		this.repository = repository;
-	}
+    @Autowired
+    public DatabaseLoader(BallroomRepository repository) {
+        this.ballroomRepository = repository;
+    }
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
+		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom I","400-500 คน"));
+		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom II","500 คน"));
+		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom III","200-250 คน"));
+
 	}
 }
