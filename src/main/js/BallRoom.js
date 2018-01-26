@@ -5,6 +5,7 @@ var Ons = require('react-onsenui');
 var client = require('./client');
 
 let imgUrl2 = 'https://www.picz.in.th/images/2018/01/25/d2bc-gallery-meetings-events-1.jpg';
+
 class ShowBill extends React.Component {
   constructor(props) {
     super(props);
@@ -166,6 +167,7 @@ class BallRoomBill extends React.Component {
 
 
       handClickConfirm(){
+
       billid = this.state.password
       firstname = this.props.state.fname;
        lastname = this.props.state.lname;
@@ -181,7 +183,7 @@ class BallRoomBill extends React.Component {
        type = this.props.state.modifier;
 
 
-      client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/address/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/billid/'+billid}).done(
+      client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/address/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/billid/'+billid+'/typeRoom/'+type}).done(
         ons.notification.alert('บันทึกสำเร็จ')
       )
         //client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/addess/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/typeRoom/'+type}).done(
@@ -320,6 +322,7 @@ class BallRoomBill extends React.Component {
       );
     }
   }
+
 
 
 let imgUrl1 = 'https://www.picz.in.th/images/2018/01/25/d2bc-gallery-meetings-events-1.jpg';
@@ -563,9 +566,9 @@ class ReserveBall extends React.Component {
                       <select value={this.state.modifier}  modifier={this.state.modifier} onChange={this.editSelects.bind(this)}>
 
                              <option> เลือกรูปแบบที่ต้องการ </option>
-                             <option value="Marooter Grand BallRoom I">Marooter Grand BallRoom I </option>
-                             <option value="Marooter Grand BallRoom II">Marooter Grand BallRoom II </option>
-                             <option value="Marooter Grand BallRoom III">Marooter Grand BallRoom III </option>
+                             <option value='MarooterBallroomI'>Marooter Grand BallRoom I </option>
+                             <option value='MarooterBallroomII'>Marooter Grand BallRoom II </option>
+                             <option value='MarooterBallroomIII'>Marooter Grand BallRoom III </option>
                            </select>
                          </form>
                       </div>
@@ -627,13 +630,13 @@ export default class BallRoom extends React.Component {
 
   ReserveBall(event) {
 
-    if(event == '1'){
+    if(event == 'MarooterBallroomI'){
     ballRoomName=this.state.ballroom
     this.props.navigator.pushPage({ component: ReserveBall, props: { key: 'reserveBall',state:this.state } });
-   }else if(event == '2'){
+  }else if(event == 'MarooterBallroomII'){
     ballRoomName=this.state.ballroom2
     this.props.navigator.pushPage({ component: ReserveBall, props: { key: 'reserveBall',state:this.state } });
-   }else if(event == '3'){
+  }else if(event == 'MarooterBallroomIII'){
     ballRoomName=this.state.ballroom3
     this.props.navigator.pushPage({ component: ReserveBall, props: { key: 'reserveBall',state:this.state } });
    }
@@ -669,7 +672,7 @@ export default class BallRoom extends React.Component {
                    3.อุปกรณ์การจัดงานแบบเบ็ดเสร็จ<br/>
                   </p>
 
-              <Ons.Button value={this.state.ballroom} onClick={this.ReserveBall.bind(this, '1')}>คลิ๊กจอง</Ons.Button><br/><br/>
+              <Ons.Button value={this.state.ballroom} onClick={this.ReserveBall.bind(this, 'MarooterBallroomI')}>คลิ๊กจอง</Ons.Button><br/><br/>
 
                </div>
            </Ons.Card>
@@ -684,7 +687,7 @@ export default class BallRoom extends React.Component {
               เพดานสูงโปร่ง ภายในห้องตกแต่งด้วยโทนสีขาว-ทอง รองรับแขกได้สูงสุด 500 ท่าน<br/>
                   มีเวทีขนาดใหญ่และจอโปรเจคเตอร์แบบครบวงจร อุปกรณ์การจัดงานแบบเบ็ดเสร็จ<br/>
                  </p>
-             <Ons.Button value={this.state.ballRoom2} onClick={this.ReserveBall.bind(this, '2')}>คลิ๊กจอง</Ons.Button><br/><br/>
+             <Ons.Button value={this.state.ballRoom2} onClick={this.ReserveBall.bind(this, 'MarooterBallroomII')}>คลิ๊กจอง</Ons.Button><br/><br/>
 
               </div>
           </Ons.Card>
@@ -700,7 +703,7 @@ export default class BallRoom extends React.Component {
               เหมาะสำหรับการจัดประชุมหรืองานเลี้ยงที่มีแขกผู้เข้าร่วมประมาณ 240 ท่าน<br/>
                   มีเวทีขนาดใหญ่และจอโปรเจคเตอร์แบบครบวงจร อุปกรณ์การจัดงานแบบเบ็ดเสร็จ<br/>
                  </p>
-             <Ons.Button value={this.state.ballRoom3} onClick={this.ReserveBall.bind(this, '3')}>คลิ๊กจอง</Ons.Button><br/><br/>
+             <Ons.Button value={this.state.ballRoom3} onClick={this.ReserveBall.bind(this, 'MarooterBallroomIII')}>คลิ๊กจอง</Ons.Button><br/><br/>
 
               </div>
           </Ons.Card>
