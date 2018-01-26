@@ -5,7 +5,6 @@ var Ons = require('react-onsenui');
 var client = require('./client');
 
 let imgUrl2 = 'https://www.picz.in.th/images/2018/01/25/d2bc-gallery-meetings-events-1.jpg';
-
 class ShowBill extends React.Component {
   constructor(props) {
     super(props);

@@ -17,19 +17,19 @@ public class ReceiptCleaning {
 	private String location;
 	private String telnum;
 	private String note;
-	private String roomnum;
+	private String roomnumber;
 	private Date date;
 	private String time;
 
 	private ReceiptCleaning() {}
 
-	public ReceiptCleaning(String fname,String lname,String location,String telnum, String note,String roomnum,Date date,String time) {
+	public ReceiptCleaning(String fname,String lname,String location,String telnum, String note,String roomnumber,Date date,String time) {
 		this.fname = fname;
 		this.lname = lname;
 		this.location = location;
 		this.telnum = telnum;
 		this.note = note;
-		this.roomnum = roomnum;
+		this.roomnumber = roomnumber;
 		this.date = date;
 	 	this.time = time;
 

@@ -4,7 +4,6 @@ var ons = require('onsenui');
 var Ons = require('react-onsenui');
 var client = require('./client');
 
-var roomnumber;
 var fname;
 var lname;
 var telnum;
@@ -12,7 +11,7 @@ var location;
 var note;
 var date;
 var time;
-var roomID='';
+var roomnumber;
 
 class  ReceiptCleaning extends React.Component {
   renderToolbar() {
@@ -315,8 +314,8 @@ export default class Cleaning extends React.Component {
   ReserveCleaning() {
     if(this.state.roomnumber !==  ''){
 
-      fetch('http://localhost:8080/api/roomnumbers/search/findByRoomID?'+
-        'roomID=' + this.state.roomnumber)
+      fetch('http://localhost:8080/api/roomnumbers/search/findByroomnumber?'+
+        'roomnumber=' + this.state.roomnumber)
          .then((response)=> response.json())
          .then((responseJson) => {
     p1 = this.state.roomnumber

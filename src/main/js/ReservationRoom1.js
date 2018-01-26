@@ -134,10 +134,10 @@ class ReservationRoom2 extends React.Component {
             <img src={"https://www.picz.in.th/images/2018/01/26/201707-11-164720_lG-0.jpg"} alt="Onsen UI" style={{ width: 500 }} />
             <tr>
               <td>
-                <p>ชื่อผู้จอง  &ensp; {name}</p>
+                <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
               </td>
             </tr>
           </center>
@@ -157,10 +157,10 @@ class ReservationRoom2 extends React.Component {
           <img src={"https://www.picz.in.th/images/2018/01/26/201707-11-165259_9F-0.jpg"} alt="Onsen UI" style={{ width: 500 }} />
         <tr>
               <td>
-                <p>ชื่อผู้จอง  &ensp; {name}</p>
+                <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
               </td>
             </tr>
           </center>
@@ -180,10 +180,10 @@ class ReservationRoom2 extends React.Component {
           <img src={"https://www.picz.in.th/images/2018/01/26/201707-11-172457_DJ-0.jpg"} alt="Onsen UI" style={{ width: 500 }} />
         <tr>
               <td>
-                <p>ชื่อผู้จอง  &ensp; {name}</p>
+                <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
                 <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
               </td>
             </tr>
           </center>
@@ -203,10 +203,10 @@ class ReservationRoom2 extends React.Component {
           <img src={"https://www.picz.in.th/images/2018/01/26/201709-12-144657_yV-0.jpg"} alt="Onsen UI" style={{ width: 500 }} />
         <tr>
               <td>
-                <p>ชื่อผู้จอง  &ensp; {name}</p>
-                <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง &ensp; {roomnumber}</p>
+                <p>ชื่อผู้จอง:  &ensp; {name} &ensp;&ensp; อีเมลล์: &ensp; {email} &ensp;&ensp; เบอร์โทร: &ensp; {tel} </p>
+                <p>ชื่อห้อง: &ensp; {nameroom}  &ensp;&ensp;&ensp;&ensp;&ensp;  หมายเลขห้อง: &ensp; {roomnumber}</p>
                 <p>ราคา:  &ensp; {price}</p>
-                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}&nbsp;at&nbsp;{hours}:{minut}:{sec}</p>
+                <p>วันเวลาที่ทำการจอง: &ensp; {datechair}/{mounthchair}/{yearchair}</p>
               </td>
             </tr>
           </center>
@@ -284,12 +284,12 @@ class numberRoom extends React.Component {
     billid = this.state.password
     name = this.state.name
     email = this.state.email
-		tel = this.state.tel
-		name2 = this.state.name
+	tel = this.state.tel
     date = "" + (chaird.getFullYear()) + (chaird.getMonth() + 1) + (chaird.getDate());
-    client({method: 'POST', path: '/billid/' + billid +'/name/' + name + '/nameroom/' + nameroom  + '/roomnumber/' + roomnumber + '/date/' + date + '/price/' + price + '/email/' + email + '/tel/' + tel}).done(
-      this.props.navigator.pushPage({ component: ReservationRoom2, props: { key: 'ReservationRoom2' } })
-    );
+    client({method: 'POST', path: '/billid/' + billid +'/name/' + name + '/nameroom/' + nameroom  + '/roomnumber/' + roomnumber + '/date/' + date + '/price/' + price}).done(
+      ons.notification.alert('Success')
+    )
+    this.props.navigator.pushPage({ component: ReservationRoom2, props: { key: 'ReservationRoom2' } })
 
   }
 

@@ -17,15 +17,11 @@ public class ReservationReceiptController {
 
     @Autowired
     ReservationReceiptRepository reservationReceiptRepository;
-    @Autowired
-    CustomerRepository customerRepository;
 
     @ResponseBody
-    @RequestMapping(path = "/billid/{billid}/name/{name}/nameroom/{nameroom}/roomnumber/{roomnumber}/date/{date}/price/{price}/email/{email}/tel/{tel}", method = RequestMethod.POST)
-    public String ReservationReceipt(@PathVariable String billid,@PathVariable String name,@PathVariable String nameroom,@PathVariable String roomnumber,@PathVariable String date,@PathVariable Double price,@PathVariable String email,@PathVariable String tel) {
-        Customer customer = new Customer(name,email,tel);
+    @RequestMapping(path = "/billid/{billid}/name/{name}/nameroom/{nameroom}/roomnumber/{roomnumber}/date/{date}/price/{price}", method = RequestMethod.POST)
+    public String ReservationReceipt(@PathVariable String billid,@PathVariable String name,@PathVariable String nameroom,@PathVariable String roomnumber,@PathVariable String date,@PathVariable Double price) {
         ReservationReceipt reservationReceipt = new ReservationReceipt(billid,name,nameroom,roomnumber,date,price);
-        this.customerRepository.save(customer);
         this.reservationReceiptRepository.save(reservationReceipt);
         return "{\"status\":\"ReservationReceipt\"}";
     }

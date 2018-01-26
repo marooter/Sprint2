@@ -3,11 +3,15 @@ var ReactDOM = require('react-dom');
 var ons = require('onsenui');
 var Ons = require('react-onsenui');
 var client = require('./client');
-import CancelRoom from './CancelRoom';
+
+import Payment from './Payment';
+import BallRoom from './BallRoom';
+import ReservationRoom1 from './ReservationRoom1';
+import Cleaning from './Cleaning';
+import Maintenance from './Maintenance';
 
 let imgUrl = 'https://www.picz.in.th/images/2018/01/25/2000.jpg';
 export default class Home extends React.Component {
-
    renderToolbar() {
     return (
       <Ons.Toolbar style={{backgroundColor: '#996699'}}>
@@ -24,9 +28,24 @@ export default class Home extends React.Component {
   PageBallRoom() {
     this.props.navigator.pushPage({ component: BallRoom, props: { key: 'ballroom' } });
   }
-  PageCancelRoom() {
-    this.props.navigator.pushPage({ component: CancelRoom, props: { key: 'cancelRoom' } });
+
+  ReservationRoom1() {
+    this.props.navigator.pushPage({ component: ReservationRoom1, props: { key: 'ReservationRoom1' } });
   }
+
+  Payment() {
+    this.props.navigator.pushPage({ component: Payment, props: { key: 'payment' } });
+  }
+
+  Cleaning() {
+    this.props.navigator.pushPage({ component: Cleaning, props: { key: 'cleaning' } });
+  }
+
+  Maintenance() {
+    this.props.navigator.pushPage({ component: Maintenance, props: { key: 'maintenance' } });
+  }
+
+
 
 render() {
     return (
@@ -38,13 +57,11 @@ render() {
         <div style={{ textAlign: 'center'}}>
           <br />
 
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }}>จองห้องจัดเลี้ยง</Ons.Button><br /><br />
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }}>จองห้องพัก</Ons.Button><br /><br />
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.PageCancelRoom.bind(this)}>แจ้งยกเลิกห้องพัก</Ons.Button><br /><br />
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }}>แจ้งทำความสะอาด</Ons.Button><br /><br />
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }}>แจ้งซ่อม</Ons.Button><br /><br />
-          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }}>ชำระเงิน</Ons.Button>
-
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.PageBallRoom.bind(this)}>จองห้องจัดเลี้ยง</Ons.Button><br /><br />
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.ReservationRoom1.bind(this)}>จองห้องพัก</Ons.Button><br /><br />
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Cleaning.bind(this)}>แจ้งทำความสะอาด</Ons.Button><br /><br />
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Maintenance.bind(this)}>แจ้งซ่อม</Ons.Button><br /><br />
+          <Ons.Button style={{ width: '45%',backgroundColor: '#00BFFF' }} onClick={this.Payment.bind(this)}>แจ้งชำระเงิน</Ons.Button>
         </div>
         </Ons.Card>
         <br/>

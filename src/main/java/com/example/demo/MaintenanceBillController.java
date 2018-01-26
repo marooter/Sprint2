@@ -17,8 +17,6 @@ public class MaintenanceBillController {
 
     @Autowired
     MaintenanceBillRepository maintenanceBillRepository;
-    @Autowired
-    EmployeeRepository EmployeeRepository;
 
     @ResponseBody
     @RequestMapping(path = "/name/{name}/cal/{cal}/roomnumber/{roomnumber}/listname/{listname}/data/{data}/date/{date}", method = RequestMethod.GET)
