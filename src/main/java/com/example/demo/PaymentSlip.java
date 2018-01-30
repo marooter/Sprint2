@@ -9,12 +9,14 @@ import lombok.Data;
 
 @Data
 @Entity
+
 public class PaymentSlip {
 
 	private @Id @GeneratedValue Long paymentId;
 
+	@OneToOne
+	private ReservationReceipt billID;
 
-	private String billID;
 	private String name;
 	private String bank;
 	private String time;
@@ -24,13 +26,13 @@ public class PaymentSlip {
 
 	private PaymentSlip() {}
 
-	public PaymentSlip(String billID,String name,String bank,String time,Date date) {
+	public PaymentSlip(ReservationReceipt billID,String name,String bank,String time,Date date) {
 		this.billID = billID;
 		this.name = name;
 		this.bank = bank;
 		this.time = time;
 		this.date = date;
-		
+
 
 	}
 }

@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,19 +15,19 @@ public class Customers {
 
 
 
-	private String billid;
+	
 	private String firstname;
 	private String lastname;
 	private String comapany;
-  private String address;
+  	private String address;
 	private String email;
 	private String tel;
 	private String phone;
 
 	private Customers() {}
 
-	public Customers(String billid,String firstname,String lastname,String comapany,String address,String email,String tel,String phone) {
-		this.billid = billid;
+	public Customers(String firstname,String lastname,String comapany,String address,String email,String tel,String phone) {
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 	  this.comapany = comapany;

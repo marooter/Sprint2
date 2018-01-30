@@ -34,25 +34,25 @@ public class MakeBallRoom {
                             @PathVariable String phone,
                             @PathVariable String job,
                             @PathVariable Long amount,
-                            @PathVariable String sDate,
-                            @PathVariable String eDate,
+                            @PathVariable Date sDate,
+                            @PathVariable Date eDate,
                             @PathVariable String billid
                             ) {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        Date enddate = new Date();
-        try {
-            date = formatter.parse(sDate);
-            enddate = formatter.parse(eDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Customers customer = new Customers(billid,firstname,lastname,co,ad,em,tel,phone);
-        Ballroombill ballroombill = new Ballroombill(billid,date,enddate,job,amount);
+        // Date date = new Date();
+        // Date enddate = new Date();
+        // try {
+        //     date = formatter.parse(sDate);
+        //     enddate = formatter.parse(eDate);
+        // } catch (ParseException e) {
+        //     e.printStackTrace();
+        // }
+        Customers customer = new Customers(firstname,lastname,co,ad,em,tel,phone);
+        Ballroombill ballroombill = new Ballroombill(billid,sDate,eDate,job,amount);
         this.customersRepository.save(customer);
         this.ballroombillRepository.save(ballroombill);
 
-        return sDate;
+        return "{\"status\":\"Voted\"}";
     }
 }

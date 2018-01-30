@@ -113,20 +113,7 @@ class ShowBill extends React.Component {
 }
 
 
-var ballRoomName;
-var firstname;
-var lastname;
-var co;
-var ad;
-var em;
-var tel;
-var phone;
-var job;
-var amount;
-var sDate;
-var eDate;
-var type;
-var billid;
+
 
 let imgUrl = 'https://www.picz.in.th/images/2018/01/25/d2bc-gallery-meetings-events-1.jpg';
 var d = new Date().getTime();
@@ -169,23 +156,24 @@ class BallRoomBill extends React.Component {
       handClickConfirm(){
 
       billid = this.state.password
-      firstname = this.props.state.fname;
-       lastname = this.props.state.lname;
-       co = this.props.state.company;
-       ad = this.props.state.address;
-       em = this.props.state.email;
-       tel = this.props.state.tel;
-       phone = this.props.state.phone;
-       job = this.props.state.job;
-       amount = this.props.state.amount;
-       sDate = this.props.state.startDate;
-       eDate = this.props.state.endDate;
-       type = this.props.state.modifier;
+      // firstname = this.props.state.fname;
+      //  lastname = this.props.state.lname;
+      //  co = this.props.state.company;
+      //  ad = this.props.state.address;
+      //  em = this.props.state.email;
+      //  tel = this.props.state.tel;
+      //  phone = this.props.state.phone;
+      //  job = this.props.state.job;
+      //  amount = this.props.state.amount;
+      //  sDate = this.props.state.startDate;
+      //  eDate = this.props.state.endDate;
+      //  type = this.props.state.modifier;
+      const {fname,lname,company,address,email,tel,phone,job,amount,startDate,endDate,modifier} = this.props.state
 
-
-      client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/address/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/billid/'+billid+'/typeRoom/'+type}).done(
-        ons.notification.alert('บันทึกสำเร็จ')
-      )
+      //  /firstname/{firstname}/lastname/{lastname}/company/{co}/address/{ad}/email/{em}/tel/{tel}/phone/{phone}/job/{job}/amount/{amount}/startdate/{sDate}/enddate/{eDate}/billid/{billid}
+      client({method: 'GET', path: '/firstname/'+fname+'/lastname/'+lname+'/company/'+company+'/address/'+address+'/email/'+email+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+startDate+'/enddate/'+endDate+'/billid/'+billid+'/typeRoom/'+modifier}).done(res=>{
+            console.log(res)
+      })
         //client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/addess/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/typeRoom/'+type}).done(
      this.props.navigator.pushPage({ component: ShowBill, props: { key: 'showBill'}});
 
@@ -346,8 +334,8 @@ class ReserveBall extends React.Component {
 		  phone:'',
 		  job:'',
 		  amount:'',
-		  startDate:'',
-		  endDate:'',
+		  startDate: new Date(),
+		  endDate:new Date(),
 		  color:'#EEE8AA',
       position:'36%',
       modifier:''
