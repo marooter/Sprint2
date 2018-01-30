@@ -13,27 +13,18 @@ public class Customers {
 
 	private @Id @GeneratedValue Long id;
 
-
-
-	
-	private String firstname;
-	private String lastname;
-	private String comapany;
+	private String name;
   	private String address;
 	private String email;
-	private String tel;
 	private String phone;
 
 	private Customers() {}
 
-	public Customers(String firstname,String lastname,String comapany,String address,String email,String tel,String phone) {
+	public Customers(String name,String address,String email,String phone) {
 		
-		this.firstname = firstname;
-		this.lastname = lastname;
-	  this.comapany = comapany;
+		this.name = name;
 		this.address = address;
 		this.email = email;
-		this.tel = tel;
 		this.phone = phone;
 	}
 }

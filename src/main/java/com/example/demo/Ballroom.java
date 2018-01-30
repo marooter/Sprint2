@@ -9,17 +9,15 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Ballroom {
 
-	private @Id
-	@GeneratedValue
-	Long id;
+	private @Id String ballroomID;
 	private String roomName;
-  private String support;
+    private String support;
 
 
 	private Ballroom() {}
 
-	public Ballroom(String roomName,String support) {
-
+	public Ballroom(String ballroomID,String roomName,String support) {
+    this.ballroomID = ballroomID;
 		this.roomName = roomName;
 		this.support = support;
 

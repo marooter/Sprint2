@@ -19,9 +19,9 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom I","400-500 คน"));
-		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom II","500 คน"));
-		this.ballroomRepository.save(new Ballroom("Marooter Grand Ballroom III","200-250 คน"));
+		this.ballroomRepository.save(new Ballroom("MarooterBallroomI","Marooter Grand Ballroom I","400-500 คน"));
+		this.ballroomRepository.save(new Ballroom("MarooterBallroomII","Marooter Grand Ballroom II","500 คน"));
+		this.ballroomRepository.save(new Ballroom("MarooterBallroomIII","Marooter Grand Ballroom III","200-250 คน"));
 
 		this.roomrepository.save(new Room("Deluxe", 1300.00));
 		this.roomrepository.save(new Room("Super Deluxe", 1600.00));
