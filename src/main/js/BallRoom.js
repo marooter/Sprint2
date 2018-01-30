@@ -41,7 +41,7 @@ class ShowBill extends React.Component {
   render() {
     return (
       <Ons.Page renderToolbar={this.renderToolbar.bind(this)}>
-      <Ons.Card style={{paddingLeft:'30%', backgroundImage: 'url(' + imgUrl2 + ')' }}>
+      <Ons.Card style={{paddingLeft:'30%'}}>
           <Ons.Card  style={{backgroundColor: this.state.color, width: '50%'}}>
            <h3 style={{textAlign: 'center' }}>*ใบบันทึก</h3>
 
@@ -58,9 +58,8 @@ class ShowBill extends React.Component {
 
           <d>
              ชื่อ: {firstname}&ensp;&ensp;&ensp;
-             นาสกุล: {lastname}
              <br/>
-             เบอ์โทร:{tel}
+             เบอ์โทร:{phone}
              <br/>
              <br/>
              รายละเอียดงาน: {job}
@@ -113,7 +112,19 @@ class ShowBill extends React.Component {
 }
 
 
-
+var ballRoomName;
+var firstname;
+var co;
+var ad;
+var em;
+var tel;
+var phone;
+var job;
+var amount;
+var sDate;
+var eDate;
+var type;
+var billid;
 
 let imgUrl = 'https://www.picz.in.th/images/2018/01/25/d2bc-gallery-meetings-events-1.jpg';
 var d = new Date().getTime();
@@ -156,27 +167,22 @@ class BallRoomBill extends React.Component {
       handClickConfirm(){
 
       billid = this.state.password
-      // firstname = this.props.state.fname;
-      //  lastname = this.props.state.lname;
-      //  co = this.props.state.company;
-      //  ad = this.props.state.address;
-      //  em = this.props.state.email;
-      //  tel = this.props.state.tel;
-      //  phone = this.props.state.phone;
-      //  job = this.props.state.job;
-      //  amount = this.props.state.amount;
-      //  sDate = this.props.state.startDate;
-      //  eDate = this.props.state.endDate;
-      //  type = this.props.state.modifier;
-      const {fname,lname,company,address,email,tel,phone,job,amount,startDate,endDate,modifier} = this.props.state
+      firstname = this.props.state.fname;
+       ad = this.props.state.address;
+       em = this.props.state.email;
+       phone = this.props.state.phone;
+       job = this.props.state.job;
+       amount = this.props.state.amount;
+       sDate = this.props.state.startDate;
+       eDate = this.props.state.endDate;
+       type = this.props.state.modifier;
 
-      //  /firstname/{firstname}/lastname/{lastname}/company/{co}/address/{ad}/email/{em}/tel/{tel}/phone/{phone}/job/{job}/amount/{amount}/startdate/{sDate}/enddate/{eDate}/billid/{billid}
-      client({method: 'GET', path: '/firstname/'+fname+'/lastname/'+lname+'/company/'+company+'/address/'+address+'/email/'+email+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+startDate+'/enddate/'+endDate+'/billid/'+billid+'/typeRoom/'+modifier}).done(res=>{
-            console.log(res)
-      })
+
+      client({method: 'GET', path: '/firstname/'+firstname+'/address/'+ad+'/email/'+em+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/billid/'+billid+'/typeRoom/'+type}).done(
+        ons.notification.alert('บันทึกสำเร็จ')
+      )
         //client({method: 'GET', path: '/firstname/'+firstname+'/lastname/'+lastname+'/company/'+co+'/addess/'+ad+'/email/'+em+'/tel/'+tel+'/phone/'+phone+'/job/'+job+'/amount/'+amount+'/startdate/'+sDate+'/enddate/'+eDate+'/typeRoom/'+type}).done(
      this.props.navigator.pushPage({ component: ShowBill, props: { key: 'showBill'}});
-
     }
 
 
@@ -204,7 +210,7 @@ class BallRoomBill extends React.Component {
       return (
         <Ons.Page renderToolbar={this.renderToolbar.bind(this)}>
 
-         <Ons.Card style={{paddingLeft:'15%', backgroundImage: 'url(' + imgUrl + ')'}}>
+         <Ons.Card style={{paddingLeft:'15%'}}>
 
              <Ons.ListTitle>ตรวจสอบข้อมูล</Ons.ListTitle>
 
@@ -229,17 +235,6 @@ class BallRoomBill extends React.Component {
                 </div>
                 <br/><br/>
 
-                 <div style={{ textAlign: 'right',paddingRight:this.state.position }}>
-                นามสกุล: &ensp;
-                  <input type="text" style={{ color: 'red' }} value={this.props.state.lname} />
-                </div>
-                <br/><br/>
-
-                 <div style={{ textAlign: 'right',paddingRight:this.state.position }}>
-                 หน่วยงาน/บริษัท: &ensp;
-                  <input type="text" style={{ color: 'red' }} value={this.props.state.company} />
-                </div>
-                <br/><br/>
 
                  <div style={{ textAlign: 'right',paddingRight:this.state.position }}>
                  ที่อยู่: &ensp;
@@ -250,12 +245,6 @@ class BallRoomBill extends React.Component {
                  <div style={{ textAlign: 'right',paddingRight:this.state.position }}>
                  email : &ensp;
                   <input type="text" style={{ color: 'red' }} value={this.props.state.email} />
-                </div>
-                <br/><br/>
-
-                 <div style={{ textAlign: 'right',paddingRight:this.state.position }}>
-                 Tel : &ensp;
-                  <input type="text" style={{ color: 'red' }} value={this.props.state.tel} />
                 </div>
                 <br/><br/>
 
@@ -326,7 +315,6 @@ class ReserveBall extends React.Component {
         selecte: 'food',
 
       fname:'',
-		  lname:'',
 		  company:'',
 		  address:'',
 		  email:'',
@@ -334,8 +322,8 @@ class ReserveBall extends React.Component {
 		  phone:'',
 		  job:'',
 		  amount:'',
-		  startDate: new Date(),
-		  endDate:new Date(),
+		  startDate:'',
+		  endDate:'',
 		  color:'#EEE8AA',
       position:'36%',
       modifier:''
@@ -365,8 +353,8 @@ class ReserveBall extends React.Component {
   }
 
   PageBill() {
-      if( ((this.state.fname)!=='') && ((this.state.lname)!=='')&& ((this.state.company)!=='')
-      && ((this.state.address)!=='') && ((this.state.email)!=='') && ((this.state.tel)!=='')
+      if( ((this.state.fname)!=='')
+      && ((this.state.address)!=='') && ((this.state.email)!=='')
       && ((this.state.phone)!=='') && ((this.state.job)!=='') && ((this.state.amount)!=='')
       && ((this.state.startDate)!=='')&& ((this.state.endDate)!=='')&& ((this.state.modifier)!=='')){
         this.props.navigator.pushPage({ component: BallRoomBill, props: { key: 'ballRoomBill',state: this.state}});
@@ -380,24 +368,12 @@ class ReserveBall extends React.Component {
     this.setState({fname: e.target.value});
   }
 
-  handleLastName(e) {
-    this.setState({lname: e.target.value});
-  }
-
-  handleCompany(e) {
-    this.setState({company: e.target.value});
-  }
-
   handleAddress(e) {
     this.setState({address: e.target.value});
   }
 
   handleEmail(e) {
     this.setState({email: e.target.value});
-  }
-
-  handleTel(e) {
-    this.setState({tel: e.target.value});
   }
 
   handlePhone(e) {
@@ -452,7 +428,7 @@ class ReserveBall extends React.Component {
     return (
       <Ons.Page renderToolbar={this.renderToolbar.bind(this)} >
 
-       <Ons.Card style={{paddingLeft:'25%',backgroundImage: 'url(' + imgUrl1 + ')' }}>
+       <Ons.Card style={{paddingLeft:'25%' }}>
 
           <Ons.Card  style={{backgroundColor: this.state.color, width: '70%'}}>
 
@@ -463,22 +439,13 @@ class ReserveBall extends React.Component {
                 <label>ชื่อ:</label> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                 &ensp;&ensp;&ensp;&ensp;&ensp;
-                <label>นามสกุล:</label>
               <div>
                <input type="text" value={this.state.fname} onChange={this.handleFirstName.bind(this)}/>
-                &ensp;&ensp;&ensp;
-               <input type="text" value={this.state.lname} onChange={this.handleLastName.bind(this)}/>
+
               </div>
            </div>
            <br/>
-           <div style={{paddingLeft:'30%' }}>
-                <label>หน่วยงาน/บริษัท:</label> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-                &ensp;&ensp;&ensp;&ensp;&ensp;
-              <div>
-               <input type="text"  size="48" value={this.state.company} onChange={this.handleCompany.bind(this)}/>
-              </div>
-           </div>
+
            <br/>
            <div style={{paddingLeft:'30%' }}>
                 <label>ที่อยู่:</label> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
@@ -499,12 +466,8 @@ class ReserveBall extends React.Component {
            </div>
             <br/>
            <div style={{paddingLeft:'30%' }}>
-                <label>โทรศัพท์:</label> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                 <label>มือถือ:</label>
               <div>
-               <input type="text" value={this.state.tel} onChange={this.handleTel.bind(this)}/>
-                &ensp;&ensp;&ensp;
                <input type="text" value={this.state.phone} onChange={this.handlePhone.bind(this)}/>
               </div>
            </div>
@@ -643,7 +606,7 @@ export default class BallRoom extends React.Component {
 
             <img src={"https://www.picz.in.th/images/2018/01/21/Gif-.gif"} style={{width: '100%'}}  />
         </p>
-    <Ons.Card style={{paddingLeft:'13%',backgroundImage: 'url(' + imgUrl3 + ')'} }>
+    <Ons.Card style={{paddingLeft:'13%'} }>
 
            <d style={{ color: '#FFFFFF'}}>เลือกห้องจัดเลี้ยง</d>
 
