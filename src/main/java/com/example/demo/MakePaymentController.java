@@ -23,25 +23,26 @@ public class MakePaymentController {
     @Autowired
     ReservationReceiptRepository reservationReceiptRepository;
 
+
+
+
     @ResponseBody
     @RequestMapping(path = "/name/{name}/idBill/{idBill}/bank/{bank}/time/{time}/date/{date}", method = RequestMethod.GET)
 
     public String paymentSlip(@PathVariable String name, @PathVariable String idBill , @PathVariable String bank,@PathVariable String time,@PathVariable String date) {
 
-
-        //ReservationReceipt reservationReceipt = this.reservationReceiptRepository.findOne(idBill);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+     ReservationReceipt billid = this.reservationReceiptRepository.findByBillid(idBill);
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     Date d = new Date();
     try {
         d = formatter.parse(date);
     } catch (ParseException e) {
         e.printStackTrace();
     }
-           PaymentSlip payment = new PaymentSlip(idBill,name,bank,time,d);
+           PaymentSlip payment = new PaymentSlip(billid,name,bank,time,d);
            this.paymentSlipRepository.save(payment);
 
-
-           return "{\"status\":\"found\"}";
+           return "{\"status\":\"save\"}";
 
 
     }

@@ -23,7 +23,14 @@ class  Payment2 extends React.Component {
   showMenu() {
     this.props.showMenu();
   }
-
+  handleSave(){
+    let {name,idBill,bankcheck,time,date,selectedBanks} = this.props.state
+    // /name/{name}/idBill/{idBill}/bank/{bank}/time/{time}/date/{date}
+    client({method: 'GET', path: `/name/${name}/idBill/${idBill}/bank/${selectedBanks}/time/${time}/date/${date}`}).done(response => {
+             console.log(response)
+               ons.notification.alert('บันทึกข้อมูลเรียบร้อย');
+     });
+  }
   render() {
 
     return (
@@ -55,7 +62,7 @@ class  Payment2 extends React.Component {
         เวลาที่โอน : {this.props.state.time}
         </p>
         <div style={{ textAlign: 'center' }}>
-        <Ons.Button>บันทึก</Ons.Button>
+        <Ons.Button onClick={this.handleSave.bind(this)}>บันทึก</Ons.Button>
         </div>
 
           </Ons.Card>
@@ -68,8 +75,7 @@ class  Payment2 extends React.Component {
     );
   }
 }
-
-
+var sendroom = '';
 var bankcheck;
 var pro = ['ธนาคารไทยพาณิชย์(SCB) 110-11212222','ธนาคารกรุงไทย(KTB) 120-11313333','ธนาคารกรุงเทพ(BBL 132-11414444)'];
 var URL = ["https://image.goosiam.com/imgupload/upload44/AyHljB4k3Acv.jpg","https://image.goosiam.com/imgupload/upload44/h81smkbmrcqT.jpg","https://image.goosiam.com/imgupload/upload44/PY7CxbuheJ3K.jpg"];
@@ -115,7 +121,22 @@ export default class Payment extends React.Component {
 
   Payment2() {
      bankcheck = this.state.selectedBanks
-    this.props.navigator.pushPage({ component: Payment2, props: { key: 'payment2',state:this.state } });
+     if(this.state.selectedBanks ==  ''){
+            ons.notification.alert('กรุณากรอกข้อมูลให้ครบ');
+       }else {
+           client({method: 'GET', path: `/name/${this.state.name.trim()}/billid/${this.state.idBill.trim()}`}).done(response => {
+            console.log(response.entity.status)
+            if(response.entity.status==="not found")
+               ons.notification.alert('ชื่อหรือเลขที่ใบบันทึกไม่ถูกต้อง');
+             else if("found")
+                this.props.navigator.pushPage({ component: Payment2, props: { key: 'payment2', state: this.state } });
+             else
+                ons.notification.alert('server error'+response.status.code);
+       });
+
+       }
+
+
   }
   handleNameChange(e) {
     this.setState({name: e.target.value});

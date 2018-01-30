@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 @Entity
 public class Ballroombill {
 
-	private @Id
+	@Id
 	@GeneratedValue
 	Long id;
 
