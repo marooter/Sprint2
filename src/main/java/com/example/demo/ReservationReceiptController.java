@@ -17,11 +17,29 @@ public class ReservationReceiptController {
 
     @Autowired
     ReservationReceiptRepository reservationReceiptRepository;
+    @Autowired
+    CustomersRepository customersRepository;
+    @Autowired
+    RoomnumberRepository roomnumberRepository;
+    @Autowired
+    RoomRepository roomRepository;
 
     @ResponseBody
-    @RequestMapping(path = "/billid/{billid}/name/{name}/nameroom/{nameroom}/roomnumber/{roomnumber}/date/{date}/price/{price}", method = RequestMethod.POST)
-    public String ReservationReceipt(@PathVariable String billid,@PathVariable String name,@PathVariable String nameroom,@PathVariable String roomnumber,@PathVariable String date,@PathVariable Double price) {
-        ReservationReceipt reservationReceipt = new ReservationReceipt(billid,name,nameroom,roomnumber,date,price);
+    @RequestMapping(path = "/billid/{billid}/name/{name}/nameroom/{nameroom}/roomnumber/{roomnumber}/date/{date}/price/{price}/email/{email}/tel/{tel}", method = RequestMethod.POST)
+    public String ReservationReceipt(@PathVariable String billid,
+                                     @PathVariable String name,
+                                     @PathVariable String nameroom,
+                                     @PathVariable String roomnumber,
+                                     @PathVariable String date,
+                                     @PathVariable Double price,
+                                     @PathVariable String email,
+                                     @PathVariable String tel) {
+
+        Roomnumber roomnum = this.roomnumberRepository.findByroomnumber(roomnumber);
+        Room room = this.roomRepository.findBynameroom(nameroom);
+        Customers customer = new Customers(name,"",email,tel);
+        this.customersRepository.save(customer);
+        ReservationReceipt reservationReceipt = new ReservationReceipt(billid,name,room,roomnum,date,price);
         this.reservationReceiptRepository.save(reservationReceipt);
         return "{\"status\":\"ReservationReceipt\"}";
     }

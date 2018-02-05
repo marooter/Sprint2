@@ -266,13 +266,28 @@ class numberRoom extends React.Component {
  }
 
   makepassword(){
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var text1 = "";
 
-        for (var i = 0; i < 5; i++)
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-    return text;
-  }
+            var text2 = "";
+            var text3 = "";
+            var possible1 = "0123456789";
+            var possible2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var possible3 = "abcdefghijklmnopqrstuvwxyz";
+            let bill = "";
+
+            for (var i = 0; i < 2; i++)
+                        text1 += possible1.charAt(Math.floor(Math.random() * possible1.length));
+
+             for (var i = 0; i < 2; i++)
+                         text2 += possible2.charAt(Math.floor(Math.random() * possible2.length));
+
+            for (var i = 0; i < 1; i++)
+                          text3 += possible3.charAt(Math.floor(Math.random() * possible3.length));
+
+              bill = text2+text1+text3;
+
+        return bill;
+      }
 
 
   componentDidMount() {
@@ -286,7 +301,7 @@ class numberRoom extends React.Component {
     email = this.state.email
 	tel = this.state.tel
     date = "" + (chaird.getFullYear()) + (chaird.getMonth() + 1) + (chaird.getDate());
-    client({method: 'POST', path: '/billid/' + billid +'/name/' + name + '/nameroom/' + nameroom  + '/roomnumber/' + roomnumber + '/date/' + date + '/price/' + price}).done(
+    client({method: 'POST', path: '/billid/' + billid +'/name/' + name + '/nameroom/' + nameroom  + '/roomnumber/' + roomnumber + '/date/' + date + '/price/' + price + '/email/' + email + '/tel/' + tel }).done(
       ons.notification.alert('Success')
     )
     this.props.navigator.pushPage({ component: ReservationRoom2, props: { key: 'ReservationRoom2' } })

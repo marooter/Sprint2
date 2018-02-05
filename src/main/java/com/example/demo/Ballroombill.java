@@ -22,6 +22,8 @@ public class Ballroombill {
 	@GeneratedValue
 	Long id;
 
+
+
     @ManyToOne
 	private Ballroom ballroom;
 

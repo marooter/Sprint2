@@ -3,6 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Pattern;
 
 
 import lombok.Data;
@@ -15,7 +16,11 @@ public class Customers {
 
 	private String name;
   	private String address;
+
+	@Pattern(regexp = "d{A,Z}")
 	private String email;
+
+	@Pattern(regexp = "0\\d{8,9}")
 	private String phone;
 
 	private Customers() {}

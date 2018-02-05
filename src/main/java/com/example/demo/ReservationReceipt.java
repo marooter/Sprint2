@@ -8,19 +8,27 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class ReservationReceipt {
+
     private @Id @GeneratedValue  Long id;
     private String billid;
-    private String nameroom;
+
+    @OneToOne
+    private Room nameroom;
+
     private Double price;
-    private String roomnumber;
+
+    @OneToOne
+    private Roomnumber roomnumber;
+
     private Date date = new Date();
     private String name;
 
@@ -28,7 +36,7 @@ public class ReservationReceipt {
 
     private ReservationReceipt() {}
     
-    public ReservationReceipt(String billid,String name,String nameroom,String roomnumber,String date,Double price){
+    public ReservationReceipt(String billid,String name,Room nameroom,Roomnumber roomnumber,String date,Double price){
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         this.billid = billid;
         this.name = name;
