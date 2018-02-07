@@ -341,26 +341,8 @@ export default  class Maintenance extends React.Component {
     this.props.navigator.popPage();
   }
 
-  PageReserveDeluxe() {
 
-    if(this.state.roomnumber !==  ''){
-
-      fetch('http://localhost:8080/api/roomnumbers/search/findByroomnumber?'+
-        'roomnumber=' + this.state.roomnumber)
-         .then((response)=> response.json())
-         .then((responseJson) => {
-              sendroom =this.state.roomnumber;
-              this.props.navigator.pushPage({ component: ReserveDeluxe, props: { key: 'reserveDeluxe'} });
-            })
-            .catch((error) => {
-                ons.notification.alert('ไอดี');
-
-            });
-    }else{
-      ons.notification.alert('กรุณาป้อนหมายเลขห้อง');
-    }
-  }
-
+  
   handleRoomnumberChange(e) {
     this.setState({roomnumber: e.target.value});
   }

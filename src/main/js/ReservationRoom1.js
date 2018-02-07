@@ -299,7 +299,7 @@ class numberRoom extends React.Component {
     billid = this.state.password
     name = this.state.name
     email = this.state.email
-	tel = this.state.tel
+  	tel = this.state.tel
     date = "" + (chaird.getFullYear()) + (chaird.getMonth() + 1) + (chaird.getDate());
     client({method: 'POST', path: '/billid/' + billid +'/name/' + name + '/nameroom/' + nameroom  + '/roomnumber/' + roomnumber + '/date/' + date + '/price/' + price + '/email/' + email + '/tel/' + tel }).done(
       ons.notification.alert('Success')
